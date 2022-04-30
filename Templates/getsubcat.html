@@ -1,0 +1,22 @@
+{% extends "dashheader.html" %}
+
+{% block content %}
+
+
+<div style="background-color: rgb(102, 102, 228); text-align: center; size: inherit;"><br>
+    <form method="post"  action="add_subcat" >
+        {% csrf_token %}
+        
+        
+        <input type="text" name="catagory" placeholder="enter subcatagory " required/><br>
+        
+        <input type="submit" name="sbt" value="ADD"><br>
+    
+    </form>
+    </div>
+
+
+
+
+
+{% endblock %}

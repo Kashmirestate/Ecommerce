@@ -1,0 +1,32 @@
+{% extends "header.html" %}
+
+{% block content %}
+<div style="background-color: rgb(102, 102, 228); text-align: center; size: inherit;"><br>
+<form method="post"  action="register" >
+    {% csrf_token%}
+    <input type="Email" name="email" placeholder="enter email" required/><br>
+    <input type="text" name="address" placeholder="enter address" required/><br>
+    <input type="text" name="password" placeholder="enter password " required/><br>
+    Seller<input type="radio" name="type" value="seller"/>
+    Buyer<input type="radio" name="type" value="buyer"/><br>
+    <input type="submit" name="sbt" value="Register"><br>
+
+</form>
+</div><br>
+<div style="background-color: rgb(102, 102, 228); text-align: center; size: inherit;">
+    {% if status == 'success' %}
+    <form method="post" action="verify">
+        {% csrf_token %}
+        <input type="text" placeholder="enter otp" required name='otp'/><br>
+        <input type="submit" name="sbt1" value="verify"><br>
+    </form>
+    {% endif %}
+    {% if message %}
+    <h1 style="text-align:center; color:rgb(35, 21, 21);"><i>Wrong otp entered please try again ! Thank you </i></h1>
+    {% endif %}
+    {% if status == 'email already exist' %}
+    <h1 style="text-align:center; color:rgb(35, 21, 21);"><i>email already exist ! Thank you </i></h1>
+    {% endif %}
+</div>
+
+{% endblock %}

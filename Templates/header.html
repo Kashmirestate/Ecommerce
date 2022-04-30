@@ -1,0 +1,62 @@
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $("#dialog").hide();
+        $("#category").hide();
+        $("#myDIV1").click(function(){
+            var x = document.getElementById("category");
+            var url = "getcategory";
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "JSON",
+                success: function(res)
+                {
+                
+                var html = "";
+                if (res.status == 'true'){
+                $.each(res.response, function (key, value) {
+                    html += "<a href= '/"+value.id+"' ><option class='catagoryList' value="+value.id+">"+value.name+"</option></a>";
+                });
+                $("#category").html(html);
+                }else{
+                    
+                    alert("no catagory");
+
+}               
+            } 
+            });
+
+
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+
+        });
+    });
+</script>
+
+<h1 style="background-color: rgb(115, 115, 216); "> SQUAREBOAT E-Commerce</h1>
+<h2 style="color: black; text-align: center;"><a href="home"> Home </a> | <a href="login"> Signin </a> | <a href="register"> Signup </a></h2>
+<div id="dialog" title="Confirm delete" style="text-align: center;">Are you sure?</div>
+
+<div class="modal-body">
+    <div class="row">
+          <div class="col-md-4" >
+            <ul name="category" id="category" style="text-align: center; background-color: rgb(64, 67, 65); color: black;" >            
+                
+            </ul>
+          </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% block content %}
+{% endblock %}

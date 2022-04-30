@@ -1,0 +1,17 @@
+{% extends "dashheader.html" %}
+
+{% block content %}
+
+
+
+
+<div style="background-color: rgb(102, 102, 228); text-align: center; size: inherit;"><br>
+    {% for item in IMAGES %}
+    <div class="col-md-4" style=" text-align: center;">
+    <a href="inner/{{ item.id }}"><img src= "{{ item.cover.url }}" id='img_upload' class="responsive"  width="600" height="400"/>
+    </a><br>
+    {{ item.desc }}<br>
+    </div>
+    {% endfor %}
+
+{% endblock %}
